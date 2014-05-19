@@ -1,0 +1,46 @@
+body {
+  margin: 0;
+  color: #333333;
+  font-size: 12px;
+  font-family: helvetica, arial, freesans, clean, sans-serif;
+  background-color: #fff;
+  line-height: 1.5;
+}
+
+a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  width: 400px;
+}
+
+.header {
+  text-align: center;
+  background-color: #f5f5f5;
+}
+
+.content {
+  margin: 10px;
+  text-align:left;
+}
+
+h1, h2, h3, h4, h5 {
+  margin: 0;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width:            16px;
+  height:           16px;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAQAAAC1+jfqAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAAAEgAAABIAEbJaz4AAAAJdnBBZwAAABAAAAAQAFzGrcMAAACoSURBVCjPY/zPgB8wMdBTAbeEYAADAwODUCC3JJKK/1DIKaFyXfePSLRItO4flRtckjBxFphCdnMOVVZmyYUMDKzMDCrslgzr0Ez4zyASqfPH6L/Rf90/IrEIUWRHsjBCtTD8QQgywgJKKEhmFSvz778MDKzMv/4+CX6/Ec0XP49/v/P77/P45/G///64/fMkhi/+M3BJCgb+Z/jPIBDAJYEQZRwEcQEAyShH8oC74V4AAABKdEVYdGNvbW1lbnQAUmVtb3ZlIGNsb3NlIGJ1dHRvbiB4IGRlbGV0ZSBmcm9tIEljb24gR2FsbGVyeSBodHRwOi8vaWNvbmdhbC5jb20vfOIgaAAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxMS0wOC0yMVQxMzozNjowNi0wNjowMDp/NdkAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTEtMDgtMjFUMTM6MzY6MDYtMDY6MDBLIo1lAAAAAElFTkSuQmCC');
+  cursor:pointer;
+  text-indent: -9999px;
+}
