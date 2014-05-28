@@ -29,7 +29,7 @@ $(function(){
   $('#close_button').on('click', close);
 
   $(function() {
-    $(document).on('click', 'a', function(e) {
+    $(document).on('click', 'a:not([data-no-link])', function(e) {
       chrome.tabs.create({url: $(this).attr('href')});
     });
   });
