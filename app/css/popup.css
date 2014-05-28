@@ -30,6 +30,44 @@ a:hover {
   text-align:left;
 }
 
+.list {
+  min-height: 100px;
+}
+
+.list.loading {
+  background: url('https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif') no-repeat center center;
+}
+
+.repo {
+  min-height: 20px;
+  padding-left: 25px;
+  background: url('/images/repo.png') no-repeat 0 0;
+}
+
+.repo .title {
+  margin-bottom: 5px;
+}
+
+.issue {
+  min-height: 20px;
+  padding-left: 30px;
+  background: url('/images/issue.png') no-repeat 0 0;
+}
+
+.issue .title {
+  margin-bottom: 5px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: ;
+}
+
+ul li {
+  margin-left: 10px;
+}
+
 h1, h2, h3, h4, h5 {
   margin: 0;
 }
