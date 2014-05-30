@@ -1,2 +1,6 @@
+app/*
 app.zip
 *.crx
+node_modules
+package
+.sass-cache
