@@ -1,6 +1,4 @@
 #! /bin/bash
 rm app.zip
-rm -fr app/*
-cp -r src/*.html src/js src/images src/manifest.json app/
-grunt sass
+./compile.sh
 zip -r app.zip app
