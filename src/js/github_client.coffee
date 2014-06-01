@@ -1,6 +1,6 @@
 window.githubClient = {
-  issues: function() {
-    return $.ajax({
+  issues: ()->
+    return $.ajax {
       url: 'https://api.github.com/issues',
       data: {
         access_token: localStorage.accessToken,
@@ -8,6 +8,5 @@ window.githubClient = {
         state: 'open'
       },
       type: 'GET'
-    });
-  }
-};
+    }
+}
