@@ -5,5 +5,7 @@ $(function(){
     e.preventDefault();
 
     localStorage.accessToken = $('#access_token').val();
+
+    alert('Options have been saved successfully.')
   });
 });
