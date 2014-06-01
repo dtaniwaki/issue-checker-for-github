@@ -3,7 +3,7 @@ module.exports = (grunt) ->
     copy: {
       dist: {
         files: [
-          {expand: true, cwd: 'src', src: ['js', 'images', '*.html', '*.json'], dest: 'app/'}
+          {expand: true, cwd: 'src', src: ['js/**', 'images/**', '*.html', '*.json'], dest: 'app/'}
         ]
       }
     }

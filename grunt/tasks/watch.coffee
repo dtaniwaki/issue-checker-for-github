@@ -1,9 +1,9 @@
 module.exports = (grunt) ->
   grunt.config.merge {
     watch: {
-      sass: {
-        files: ['src/**/*.scss'],
-        tasks: ['sass'],
+      dist: {
+        files: ['src/**'],
+        tasks: ['compile'],
         options: {
           spawn: false
         }
