@@ -9,7 +9,12 @@ window.addEventListener "DOMContentLoaded", ()->
         $('<h3 class="title"><a href="' + this.repository.html_url + '">' + this.repository.owner.login + ' / ' + this.repository.name + '</a></h3>').prependTo($repo)
         $repo.appendTo($list)
       $li = $('<li class="issue">')
-      $li.append('<a href="' + this.html_url + '" title="' + this.body + '" class="title">' + this.title + '</a>')
+      link = ''
+      link += '<a href="' + this.html_url + '" title="' + this.body + '" class="title item">' + this.title + '</a>'
+      if localStorage.showLabels == 'true'
+        $.each this.labels, (idx)->
+          link += '<span class="label item" style="background-color: #' + this.color + '">' + this.name + '</span>'
+      $li.append(link)
       $('ul', $repo).append($li)
   ).fail((jqXHR, textStatus)->
     $list.html('Please set a valid access token.')
