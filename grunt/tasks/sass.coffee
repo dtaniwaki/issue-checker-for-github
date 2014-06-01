@@ -1,5 +1,5 @@
 module.exports = (grunt) ->
-  grunt.initConfig {
+  grunt.config.merge {
     sass: {
       dist: {
         options: {

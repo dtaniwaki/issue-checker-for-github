@@ -2,10 +2,25 @@
 
 [Chrome Extension](https://chrome.google.com/webstore/detail/github-checker/dejgifcjoefbogdjpjokobdlddjhbich) to check github issues assigned to you.
 
-# Test
+# How to develop
 
-You can compile the assets by this command and load the app directory into your Chrome directly
+Firstly, load the `app` directory directly onto (extension management page)[chrome://extensions/].
+
+Then, start watching the `src` directory to compile the assets automatically.
 
 ```bash
-./compile.sh
+grunt watch
 ```
+
+Or you can compile them by yourself as well.
+
+```bash
+grunt compile
+```
+
+# How to pack
+
+```bash
+grunt pack
+```
+

@@ -7,3 +7,6 @@ module.exports = (grunt)->
   grunt.initConfig config
   grunt.loadTasks './grunt/tasks'
 
+  grunt.registerTask 'compile', ['copy', 'sass']
+  grunt.registerTask 'pack', ['clean', 'compile', 'compress']
+  grunt.registerTask 'default', ['pack']
