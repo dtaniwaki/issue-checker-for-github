@@ -38,9 +38,10 @@ a {
 }
 
 .repo {
-  min-height: 20px;
-  padding-left: 25px;
+  min-height: 16px;
+  padding-left: 20px;
   background: url('/images/repo.png') no-repeat 0 0;
+  margin-bottom: 10px;
 
   .title {
     margin-bottom: 5px;
@@ -48,8 +49,8 @@ a {
 }
 
 .issue {
-  min-height: 20px;
-  padding-left: 30px;
+  min-height: 16px;
+  padding-left: 25px;
   background: url('/images/issue.png') no-repeat 0 0;
 
   .title {
