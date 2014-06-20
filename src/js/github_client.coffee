@@ -1,10 +1,7 @@
 window.githubClient = {
-  issues: ()->
-    data = {
-      access_token: localStorage.accessToken,
-      filter: 'assigned',
-      state: 'open'
-    }
+  issues: (options)->
+    data = $.extend({filter: 'assigned', state: 'open'}, options)
+    data.access_token = localStorage.accessToken
     return $.ajax {
       url: 'https://api.github.com/issues',
       data: data,

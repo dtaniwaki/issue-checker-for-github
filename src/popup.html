@@ -10,12 +10,16 @@
   </head>
   <body>
     <div class="wrapper">
-      <a href="#" id="close_button" class="close-btn" data-no-link>Close</a>
       <div class="header">
-        <h1>Github Issues Assigned To You</h1>
+        <h1 class="title">Github Issues</h1>
+        <a href="#" id="close_button" class="close-btn" data-no-link>Close</a>
       </div>
       <div class="content">
-        <ul id="list" class="list loading"></ul>
+        <ul id="tabs" class="tabs">
+          <li><a href="#assigned" id="tab_assigned" class="tab">Assigned to me</a></li>
+          <li><a href="#created" id="tab_created" class="tab">Created by me</a></li>
+        </ul>
+        <ul id="list" class="repos"></ul>
       </div>
     </div>
   </body>
