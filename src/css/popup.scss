@@ -72,6 +72,7 @@ h1, h2, h3, h4, h5 {
       padding-bottom: 5px;
       border-bottom: 1px solid #eee;
       background: url('/images/repo.png') no-repeat 0 0;
+      font-size: 1.2em;
     }
   }
   .issues {
@@ -80,17 +81,21 @@ h1, h2, h3, h4, h5 {
 }
 
 .issues {
-  .issue-title {
-    display: block;
+  .issue {
     margin-bottom: 5px;
+  }
+  .issue-title {
+    display: inline-block;
+    margin-right: 5px;
     padding-left: 25px;
     padding-bottom: 5px;
     background: url('/images/issue.png') no-repeat 0 0;
   }
   .label {
     display: inline-block;
+    padding: 0.2em 5px;
+    margin-right: 5px;
     font-size: 0.8em;
-    padding: 0.1em 5px;
     color: #FFF;
   }
 }

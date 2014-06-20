@@ -20,7 +20,7 @@ updatePage = (data)->
     link += '<a href="' + this.html_url + '" class="issue-title">' + this.title + '</a>'
     if localStorage.showLabels == 'true'
       $.each this.labels, (idx)->
-        link += '<span class="label item" style="background-color: #' + this.color + '">' + this.name + '</span>'
+        link += '<span class="label" style="background-color: #' + this.color + '">' + this.name + '</span>'
     $li.append(link)
     $('ul', $repo).append($li)
 
