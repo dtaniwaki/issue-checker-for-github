@@ -16,6 +16,11 @@ a {
   }
 }
 
+h1, h2, h3, h4, h5 {
+  margin: 0;
+  font-size: 1.0em;
+}
+
 .wrapper {
   border-left: 1px solid #d8d8d8;
   border-right: 1px solid #d8d8d8;
@@ -34,7 +39,7 @@ a {
 }
 
 .long-field {
-  width: 300px;
+  width: 100%;
 }
 
 .description {
@@ -45,4 +50,16 @@ a {
 
 .option {
   margin-bottom: 20px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.sub-label {
+  display: inline-block;
+  font-weight: normal;
 }

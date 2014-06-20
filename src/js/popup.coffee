@@ -30,14 +30,15 @@ failurePage = (jqXHR, textStatus)->
   chrome.tabs.create({url: '/options.html'})
 
 window.addEventListener "DOMContentLoaded", ()->
+  filterType = localStorage.defaultFilter || 'assigned'
   $('#tabs [data-filter-type]').removeClass('selected')
-  $('#tabs [data-filter-type="assigned"]').addClass('selected')
+  $('#tabs [data-filter-type=' + filterType + ']').addClass('selected')
   loadingPage(true)
-  window.githubClient.issues({filter: 'assigned'}).done(updatePage).fail(failurePage).always(()->
+  window.githubClient.issues({filter: filterType}).done(updatePage).fail(failurePage).always(()->
     loadingPage(false)
   )
 
-$(()->
+$ ()->
   $('#close_button').on 'click', (e)->
     e.preventDefault()
     window.close()
@@ -61,4 +62,3 @@ $(()->
     href = $(this).attr('href')
     if href[0] != '#'
       chrome.tabs.create({url: href})
-)

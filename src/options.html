@@ -13,13 +13,27 @@
     </div>
     <form action="" class="options">
       <div class="option">
-        <label for="access_token">Access Token</label>
+        <label for="access_token" class="label">Access Token</label>
         <input type="text" name="access_token" id="access_token" class="long-field">
         <p class="description">You can generate your access token for this extension on <a href="https://github.com/settings/applications">github application settings page</a></p>
       </div>
       <div class="option">
+        <h3 class="label">Default Filter</h3>
+        <input id="default_filter_assigned" type="radio" name="default_filter" value="assigned">
+        <label for="default_filter_assigned" class="sub-label">Assigned</label>
+        <input id="default_filter_created" type="radio" name="default_filter" value="created">
+        <label for="default_filter_created" class="sub-label">Created</label>
+        <input id="default_filter_mentioned" type="radio" name="default_filter" value="mentioned">
+        <label for="default_filter_mentioned" class="sub-label">Mentioned</label>
+        <input id="default_filter_subscribed" type="radio" name="default_filter" value="subscribed">
+        <label for="default_filter_subscribed" class="sub-label">Subscribed</label>
+        <input id="default_filter_all" type="radio" name="default_filter" value="all">
+        <label for="default_filter_all" class="sub-label">All</label>
+      </div>
+      <div class="option">
+        <h3 class="label">Show Labels</h3>
         <input id="show_labels" type="checkbox">
-        <label for="show_labels">Show Label</label>
+        <label for="show_labels" class="sub-label">Show</label>
       </div>
       <button id="save_btn" class="button">Save</button>
     </form>
