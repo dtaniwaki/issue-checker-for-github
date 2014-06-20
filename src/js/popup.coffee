@@ -17,7 +17,7 @@ updatePage = (data)->
       $repo.appendTo($list)
     $li = $('<li class="issue">')
     link = ''
-    link += '<a href="' + this.html_url + '" title="' + this.body + '" class="issue-title">' + this.title + '</a>'
+    link += '<a href="' + this.html_url + '" class="issue-title">' + this.title + '</a>'
     if localStorage.showLabels == 'true'
       $.each this.labels, (idx)->
         link += '<span class="label item" style="background-color: #' + this.color + '">' + this.name + '</span>'
@@ -30,8 +30,8 @@ failurePage = (jqXHR, textStatus)->
   chrome.tabs.create({url: '/options.html'})
 
 window.addEventListener "DOMContentLoaded", ()->
-  $('#tabs a').removeClass('selected')
-  $('#tab_assigned').addClass('selected')
+  $('#tabs [data-filter-type]').removeClass('selected')
+  $('#tabs [data-filter-type="assigned"]').addClass('selected')
   loadingPage(true)
   window.githubClient.issues({filter: 'assigned'}).done(updatePage).fail(failurePage).always(()->
     loadingPage(false)
@@ -42,25 +42,19 @@ $(()->
     e.preventDefault()
     window.close()
 
-  $('#tab_assigned').click (e)->
-    e.preventDefault()
+  $tabs = $('#tabs [data-filter-type]')
+  $tabs.each (idx)->
+    $(this).click (e)->
+      e.preventDefault()
+      $tab = $(this)
+      filterType = $tab.data('filter-type')
 
-    $('#tabs a').removeClass('selected')
-    $(this).addClass('selected')
-    loadingPage(true)
-    window.githubClient.issues({filter: 'assigned'}).done(updatePage).fail(failurePage).always(()->
-      loadingPage(false)
-    )
-
-  $('#tab_created').click (e)->
-    e.preventDefault()
-
-    $('#tabs a').removeClass('selected')
-    $(this).addClass('selected')
-    loadingPage(true)
-    window.githubClient.issues({filter: 'created'}).done(updatePage).fail(failurePage).always(()->
-      loadingPage(false)
-    )
+      $tabs.removeClass('selected')
+      $tab.addClass('selected')
+      loadingPage(true)
+      window.githubClient.issues({filter: filterType}).done(updatePage).fail(failurePage).always(()->
+        loadingPage(false)
+      )
 
   $(document).on 'click', 'a:not([data-no-link])', (e)->
     e.preventDefault()
