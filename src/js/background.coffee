@@ -1,13 +1,36 @@
 updateBadge = ()->
   filterType = localStorage.defaultFilter || 'assigned'
-  window.githubClient.issues({filter: filterType, state: 'open'}).done((data)->
+  window.githubClient.issues({filter: filterType, state: 'open'}).done (data)->
     num = data.length
     if num > 0
-      chrome.browserAction.setBadgeText({text: String(num)})
-      chrome.browserAction.setBadgeBackgroundColor({color: [255, 0, 0, 200]})
+      chrome.browserAction.setBadgeText {text: String(num)}
+      chrome.browserAction.setBadgeBackgroundColor {color: [255, 0, 0, 200]}
     else
-      chrome.browserAction.setBadgeText({text: ""})
-  )
+      chrome.browserAction.setBadgeText {text: ""}
+
+    now = moment()
+
+    if localStorage.notification == 'yes'
+      items = []
+      lastNotifiedTime = moment localStorage.lastNotifiedTime ? [1970, 1, 1]
+      $.each data, (idx)->
+        t = moment this.created_at
+        if lastNotifiedTime.valueOf() < t.valueOf()
+          items.push {title: this.title, message: ''}
+      if items.length > 5
+        items = items.slice(1, 5)
+        items.push {title: '', message: 'and more...'}
+
+      chrome.notifications.create 'github-checker', {
+        type: "list",
+        title: "Github Checker Notification",
+        message: "You got new issues!",
+        iconUrl: "images/icon48.png",
+        items: items,
+        isClickable: true
+      }, (notificationId)->
+
+    localStorage.lastNotifiedTime = now
 
 $ ()->
   pollInterval = 60 * 1000
