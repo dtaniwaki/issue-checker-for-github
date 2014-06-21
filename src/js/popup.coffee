@@ -23,24 +23,27 @@ updatePage = (data)->
         link += '<span class="label" style="background-color: #' + this.color + '">' + this.name + '</span>'
     $li.append(link)
     $('ul', $repo).append($li)
-  data = data.slice(1)
-  chrome.runtime.sendMessage {
-    from: "popup", subject: "updateBadge", message: data
-  }, ()-> {}
 
 failurePage = (jqXHR, textStatus)->
   $list = $('#list')
   $list.html('Please set a valid access token.')
   chrome.tabs.create({url: '/options.html'})
 
-window.addEventListener "DOMContentLoaded", ()->
-  filterType = localStorage.defaultFilter || 'assigned'
+loadIssues = (filterType)->
   $('#tabs [data-filter-type]').removeClass('selected')
   $('#tabs [data-filter-type=' + filterType + ']').addClass('selected')
   loadingPage(true)
-  window.githubClient.issues({filter: filterType}).done(updatePage).fail(failurePage).always(()->
+  window.githubClient.issues({filter: filterType}).done (data)->
+    updatePage(data)
+    if filterType == (localStorage.defaultFilter || 'assigned')
+      chrome.runtime.sendMessage {
+        from: "popup", subject: "updateBadge", message: data
+      }, ()-> {}
+  .fail(failurePage).always ()->
     loadingPage(false)
-  )
+
+window.addEventListener "DOMContentLoaded", ()->
+  loadIssues localStorage.defaultFilter || 'assigned'
 
 $ ()->
   $('#close_button').on 'click', (e)->
@@ -51,15 +54,7 @@ $ ()->
   $tabs.each (idx)->
     $(this).click (e)->
       e.preventDefault()
-      $tab = $(this)
-      filterType = $tab.data('filter-type')
-
-      $tabs.removeClass('selected')
-      $tab.addClass('selected')
-      loadingPage(true)
-      window.githubClient.issues({filter: filterType}).done(updatePage).fail(failurePage).always(()->
-        loadingPage(false)
-      )
+      loadIssues $(this).data('filter-type')
 
   $(document).on 'click', 'a:not([data-no-link])', (e)->
     e.preventDefault()
