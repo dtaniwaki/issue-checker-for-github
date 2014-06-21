@@ -9,18 +9,18 @@ loadingPage = (flag)->
 updatePage = (data)->
   $list = $('#list')
   $list.html('')
-  $.each data, (idx)->
-    $repo = $('#repo_' + this.repository.id, $list)
+  $.each data, (idx, d)->
+    $repo = $('#repo_' + d.repository.id, $list)
     if $repo.length == 0
-      $repo = $('<li id="repo_' + this.repository.id + '" class="repo"><ul class="issues"></ul></li>')
-      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + this.repository.html_url + '">' + this.repository.owner.login + ' / ' + this.repository.name + '</a></h3>').prependTo($repo)
+      $repo = $('<li id="repo_' + d.repository.id + '" class="repo"><ul class="issues"></ul></li>')
+      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + d.repository.html_url + '">' + d.repository.owner.login + ' / ' + d.repository.name + '</a></h3>').prependTo($repo)
       $repo.appendTo($list)
     $li = $('<li class="issue">')
     link = '<span class="octicon octicon-issue-opened"></span>'
-    link += '<a href="' + this.html_url + '" class="issue-title">' + this.title + '</a>'
+    link += '<a href="' + d.html_url + '" class="issue-title">' + d.title + '</a>'
     if localStorage.showLabels == 'true'
-      $.each this.labels, (idx)->
-        link += '<span class="label" style="background-color: #' + this.color + '">' + this.name + '</span>'
+      $.each d.labels, (idx)->
+        link += '<span class="label" style="background-color: #' + d.color + '">' + d.name + '</span>'
     $li.append(link)
     $('ul', $repo).append($li)
 

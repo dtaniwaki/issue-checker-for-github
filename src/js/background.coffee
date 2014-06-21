@@ -5,17 +5,21 @@ updateBadge = (num)->
   else
     chrome.browserAction.setBadgeText {text: ""}
 
-notify = (data)->
+notify = (data, callback)->
   items = []
-  lastUpdated = moment localStorage.lastUpdated ? [1970, 1, 1]
-  $.each data, (idx)->
-    t = moment this.created_at
-    if lastUpdated.valueOf() < t.valueOf()
-      items.push {title: this.title, message: ''}
+  try
+    lastIssues = JSON.parse localStorage.lastIssues
+  catch
+    lastIssues = []
+  $.each data, (idx, d)->
+    if lastIssues.indexOf(d.number) == -1
+      items.push {title: d.title, message: ''}
 
   if items.length > 5
-    items = items.slice(1, 5)
+    items = items.slice(0, 4)
     items.push {title: ' and more...', message: ''}
+
+  chrome.notifications.clear 'github-checker', ()->
 
   chrome.notifications.create 'github-checker', {
     type: "list",
@@ -25,24 +29,24 @@ notify = (data)->
     items: items,
     isClickable: true
   }, (notificationId)->
-
+    callback?()
 
 syncIssues = (data)->
   filterType = localStorage.defaultFilter || 'assigned'
-  now = moment()
 
   if data?
     updateBadge(data.length)
 
-    localStorage.lastUpdated = now
+    localStorage.lastIssues = JSON.stringify $.map data, (d, idx)->
+      d.number
   else
     window.githubClient.issues({filter: filterType, state: 'open'}).done (data)->
       updateBadge(data.length)
 
       if localStorage.notification == 'yes'
-        notify(data)
-
-      localStorage.lastUpdated = now
+        notify data, ()->
+          localStorage.lastIssues = JSON.stringify $.map data, (d, idx)->
+            d.number
 
 $ ()->
   pollInterval = 60 * 1000
