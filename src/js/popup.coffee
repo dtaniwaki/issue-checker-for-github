@@ -23,6 +23,10 @@ updatePage = (data)->
         link += '<span class="label" style="background-color: #' + this.color + '">' + this.name + '</span>'
     $li.append(link)
     $('ul', $repo).append($li)
+  data = data.slice(1)
+  chrome.runtime.sendMessage {
+    from: "popup", subject: "updateBadge", message: data
+  }, ()-> {}
 
 failurePage = (jqXHR, textStatus)->
   $list = $('#list')
