@@ -19,7 +19,7 @@ updateBadge = ()->
           items.push {title: this.title, message: ''}
       if items.length > 5
         items = items.slice(1, 5)
-        items.push {title: '', message: 'and more...'}
+        items.push {title: ' and more...', message: ''}
 
       chrome.notifications.create 'github-checker', {
         type: "list",
