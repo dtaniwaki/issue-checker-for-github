@@ -3,10 +3,10 @@ module.exports = (grunt) ->
     copy: {
       dist: {
         files: [
-          {expand: true, cwd: 'src', src: ['js/**/*.js', 'images/**', '*.html', '*.json'], dest: 'app/'}
+          {expand: true, cwd: 'src', src: ['css/**/*.css', 'js/**/*.js', 'images/**', 'css/octicons/*', '*.html', '*.json'], dest: 'app/'}
         ]
       }
     }
   }
 
-  grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-copy')

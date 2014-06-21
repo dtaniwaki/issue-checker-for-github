@@ -13,10 +13,10 @@ updatePage = (data)->
     $repo = $('#repo_' + this.repository.id, $list)
     if $repo.length == 0
       $repo = $('<li id="repo_' + this.repository.id + '" class="repo"><ul class="issues"></ul></li>')
-      $('<h3 class="repo-title"><a href="' + this.repository.html_url + '">' + this.repository.owner.login + ' / ' + this.repository.name + '</a></h3>').prependTo($repo)
+      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + this.repository.html_url + '">' + this.repository.owner.login + ' / ' + this.repository.name + '</a></h3>').prependTo($repo)
       $repo.appendTo($list)
     $li = $('<li class="issue">')
-    link = ''
+    link = '<span class="octicon octicon-issue-opened"></span>'
     link += '<a href="' + this.html_url + '" class="issue-title">' + this.title + '</a>'
     if localStorage.showLabels == 'true'
       $.each this.labels, (idx)->

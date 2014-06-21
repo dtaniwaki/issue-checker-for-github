@@ -32,6 +32,10 @@ h1, h2, h3, h4, h5 {
   font-size: 1.0em;
 }
 
+.octicon {
+  font-size: 16px;
+}
+
 .wrapper {
   width: 400px;
 }
@@ -65,15 +69,16 @@ h1, h2, h3, h4, h5 {
   margin: 5px;
   .repo {
     margin-bottom: 10px;
-    .repo-title {
-      display: block;
-      margin-bottom: 10px;
-      padding-left: 20px;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #eee;
-      background: url('/images/repo.png') no-repeat 0 0;
-      font-size: 1.2em;
-    }
+  }
+  .repo-title {
+    display: block;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 1.2em;
+  }
+  .octicon {
+    margin-right: 10px;
   }
   .issues {
     margin-left: 20px;
@@ -87,9 +92,7 @@ h1, h2, h3, h4, h5 {
   .issue-title {
     display: inline-block;
     margin-right: 5px;
-    padding-left: 25px;
     padding-bottom: 5px;
-    background: url('/images/issue.png') no-repeat 0 0;
   }
   .label {
     display: inline-block;
@@ -97,6 +100,9 @@ h1, h2, h3, h4, h5 {
     margin-right: 5px;
     font-size: 0.8em;
     color: #FFF;
+  }
+  .octicon {
+    margin-right: 10px;
   }
 }
 
