@@ -3,7 +3,7 @@ window.githubClient = {
     data = $.extend({filter: 'assigned', state: 'open'}, options)
     data.access_token = localStorage.accessToken
     return $.ajax {
-      url: 'https://api.github.com/issues',
+      url: (localStorage.endPoint || 'https://api.github.com/') + 'issues',
       data: data,
       type: 'GET'
     }
