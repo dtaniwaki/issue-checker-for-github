@@ -9,19 +9,20 @@ loadingPage = (flag)->
 updatePage = (data)->
   $list = $('#list')
   $list.html('')
-  $.each data, (idx, d)->
-    $repo = $('#repo_' + d.repository.id, $list)
+  $.each data, (idx, issue)->
+    $repo = $('#repo_' + issue.repository.id, $list)
     if $repo.length == 0
-      $repo = $('<li id="repo_' + d.repository.id + '" class="repo"><ul class="issues"></ul></li>')
-      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + d.repository.html_url + '">' + d.repository.owner.login + ' / ' + d.repository.name + '</a></h3>').prependTo($repo)
+      $repo = $('<li id="repo_' + issue.repository.id + '" class="repo"><ul class="issues"></ul></li>')
+      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + issue.repository.html_url + '">' + issue.repository.owner.login + ' / ' + issue.repository.name + '</a></h3>').prependTo($repo)
       $repo.appendTo($list)
     $li = $('<li class="issue">')
+    $title = $('<span class="issue-title">').appendTo($li)
     link = '<span class="octicon octicon-issue-opened"></span>'
-    link += '<a href="' + d.html_url + '" class="issue-title">' + d.title + '</a>'
-    if localStorage.showLabels == 'true'
-      $.each d.labels, (idx)->
-        link += '<span class="label" style="background-color: #' + d.color + '">' + d.name + '</span>'
-    $li.append(link)
+    link += '<a href="' + issue.html_url + '">' + issue.title + '</a>'
+    if localStorage.showLabels == 'yes'
+      $.each issue.labels, (idx, label)->
+        link += '<span class="label" style="background-color: #' + label.color + '">' + label.name + '</span>'
+    $title.append(link)
     $('ul', $repo).append($li)
 
 failurePage = (jqXHR, textStatus)->
@@ -51,8 +52,8 @@ $ ()->
     window.close()
 
   $tabs = $('#tabs [data-filter-type]')
-  $tabs.each (idx)->
-    $(this).click (e)->
+  $tabs.each (idx, tab)->
+    $(tab).click (e)->
       e.preventDefault()
       loadIssues $(this).data('filter-type')
 
