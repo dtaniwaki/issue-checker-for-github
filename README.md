@@ -1,6 +1,8 @@
 # github-checker
 
-[Chrome Extension](https://chrome.google.com/webstore/detail/github-checker/dejgifcjoefbogdjpjokobdlddjhbich) to check github issues assigned to you.
+[![](misc/store_badge.png)][store]
+
+A chrome extension to check github issues assigned to you.
 
 # How to develop
 
@@ -24,3 +26,4 @@ grunt compile
 grunt pack
 ```
 
+[store]: https://chrome.google.com/webstore/detail/github-checker/dejgifcjoefbogdjpjokobdlddjhbich
