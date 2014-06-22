@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Github Checker",
-  "version": "0.2.9",
+  "version": "0.2.10",
   "options_page": "options.html",
 
   "description": "Check Github issues",
