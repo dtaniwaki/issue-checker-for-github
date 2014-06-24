@@ -13,7 +13,7 @@ updatePage = (data)->
     $repo = $('#repo_' + issue.repository.id, $list)
     if $repo.length == 0
       $repo = $('<li id="repo_' + issue.repository.id + '" class="repo"><ul class="issues"></ul></li>')
-      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + issue.repository.html_url + '">' + issue.repository.owner.login + ' / ' + issue.repository.name + '</a></h3>').prependTo($repo)
+      $('<h3 class="repo-title"><span class="octicon octicon-repo"></span><a href="' + issue.repository.owner.html_url + '">' + issue.repository.owner.login + '</a> / <a href="' + issue.repository.html_url + '">' + issue.repository.name + '</a></h3>').prependTo($repo)
       $repo.appendTo($list)
     $li = $('<li class="issue">')
     $title = $('<span class="issue-title">').appendTo($li)
