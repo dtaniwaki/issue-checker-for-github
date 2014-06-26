@@ -4,6 +4,10 @@
 
 A chrome extension to check github issues assigned to you.
 
+# Screenshot
+
+![screenshot](misc/screenshot.gif)
+
 # How to develop
 
 Firstly, load the `app` directory directly onto (extension management page)[chrome://extensions/].
