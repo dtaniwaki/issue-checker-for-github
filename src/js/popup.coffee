@@ -7,6 +7,7 @@ loadingPage = (flag)->
     $list.removeClass('loading')
 
 updatePage = (data)->
+  console.log data
   $list = $('#list')
   $list.html('')
   $.each data, (idx, issue)->
@@ -24,6 +25,11 @@ updatePage = (data)->
         link += '<span class="label" style="background-color: #' + label.color + '">' + label.name + '</span>'
     $title.append(link)
     $('ul', $repo).append($li)
+    if localStorage.showMergeable == 'yes' and issue.pull_request?.url
+      window.githubClient.get(issue.pull_request.url).done (data)->
+        state = data.mergeable_state
+        state = 'unknown' if ['clean', 'error', 'unknown', 'unstable', 'merged', 'dirty', 'closed-dirty'].indexOf(state) == -1
+        $title.append('<div class="branch-action branch-action-state-' + state + '"><span class="octicon octicon-git-merge branch-action-icon"></span></div>')
 
 failurePage = (jqXHR, textStatus)->
   $list = $('#list')

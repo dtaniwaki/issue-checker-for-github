@@ -156,3 +156,32 @@ h1, h2, h3, h4, h5 {
     outline: webkit-focus-ring-color auto 5px;
   }
 }
+
+.branch-action {
+  display: inline-block;
+}
+
+.branch-action-icon {
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+
+  .branch-action-state-clean & {
+    background-color: #6cc644;
+  }
+  .branch-action-state-error & {
+    background-color: #bd2c00;
+  }
+  .branch-action-state-unknown &, .branch-action-state-unstable & {
+    background-color: #cea61b;
+  }
+  .branch-action-state-merged & {
+    background-color: #6e5494;
+  }
+  .branch-action-state-dirty &, .branch-action-state-closed-dirty & {
+    background-color: #888;
+  }
+}
