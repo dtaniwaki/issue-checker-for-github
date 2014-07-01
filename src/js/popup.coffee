@@ -20,16 +20,18 @@ updatePage = (data)->
     $title = $('<span class="issue-title">').appendTo($li)
     link = '<span class="octicon octicon-issue-opened"></span>'
     link += '<a href="' + issue.html_url + '">' + issue.title + '</a>'
-    if localStorage.showLabels == 'yes'
+    if !localStorage.showLabels? or localStorage.showLabels == 'yes'
       $.each issue.labels, (idx, label)->
         link += '<span class="label" style="background-color: #' + label.color + '">' + label.name + '</span>'
     $title.append(link)
     $('ul', $repo).append($li)
-    if localStorage.showMergeable == 'yes' and issue.pull_request?.url
-      window.githubClient.get(issue.pull_request.url).done (data)->
-        state = data.mergeable_state
-        state = 'unknown' if ['clean', 'error', 'unknown', 'unstable', 'merged', 'dirty', 'closed-dirty'].indexOf(state) == -1
-        $title.append('<div class="branch-action branch-action-state-' + state + '"><span class="octicon octicon-git-merge branch-action-icon"></span></div>')
+
+    if !localStorage.showMergeable? or localStorage.showMergeable == 'yes'
+      if issue.pull_request?.url
+        window.githubClient.get(issue.pull_request.url).done (data)->
+          state = data.mergeable_state
+          state = 'unknown' if ['clean', 'error', 'unknown', 'unstable', 'merged', 'dirty', 'closed-dirty'].indexOf(state) == -1
+          $title.append('<div class="branch-action branch-action-state-' + state + '"><span class="octicon octicon-git-merge branch-action-icon"></span></div>')
 
 failurePage = (jqXHR, textStatus)->
   $list = $('#list')
