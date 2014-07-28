@@ -12,8 +12,12 @@ notify = (data, callback)->
   catch
     lastIssues = []
   $.each data, (idx, d)->
-    if lastIssues.indexOf(d.number) == -1
-      items.push {title: d.title, message: ''}
+    if lastIssues.length == 0
+        items.push {title: d.title, message: ''}
+    else
+      for i,value of lastIssues
+        if value.id == d.id && value.updated_at < new Date(d.updated_at).getTime()
+          items.push {title: d.title, message: ''}
 
   if items.length > 5
     items = items.slice(0, 4)
@@ -38,7 +42,7 @@ syncIssues = (data)->
     updateBadge(data.length)
 
     localStorage.lastIssues = JSON.stringify $.map data, (d, idx)->
-      d.number
+      {id: d.id, updated_at: new Date(d.updated_at).getTime() } 
   else
     window.githubClient.issues({filter: filterType, state: 'open'}).done (data)->
       updateBadge(data.length)
@@ -46,7 +50,7 @@ syncIssues = (data)->
       if localStorage.notification == 'yes'
         notify data, ()->
           localStorage.lastIssues = JSON.stringify $.map data, (d, idx)->
-            d.number
+            {id: d.id, updated_at: new Date(d.updated_at).getTime() } 
 
 $ ()->
   pollInterval = 60 * 1000
