@@ -1,8 +1,8 @@
-# github-checker
+# issue-checker-for-github
 
 [![](misc/store_badge.png)][store]
 
-A chrome extension to check github issues assigned to you.
+A Chrome extension to check GitHub issues assigned to you.
 
 # Screenshot
 

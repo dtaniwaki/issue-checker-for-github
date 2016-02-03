@@ -23,11 +23,11 @@ notify = (data, callback)->
     items = items.slice(0, 4)
     items.push {title: ' and more...', message: ''}
 
-  chrome.notifications.clear 'github-checker', ()->
+  chrome.notifications.clear 'issue-checker-for-github', ()->
 
-  chrome.notifications.create 'github-checker', {
+  chrome.notifications.create 'issue-checker-for-github', {
     type: "list",
-    title: "Github Checker Notification",
+    title: "Issue Checker for GitHub Notification",
     message: "You got new issues!",
     iconUrl: "images/icon48.png",
     items: items,

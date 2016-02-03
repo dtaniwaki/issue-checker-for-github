@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "github-checker",
+  "name": "issue-checker-for-github",
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
@@ -16,6 +16,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:dtaniwaki/github-checker.git"
+    "url": "git@github.com:dtaniwaki/issue-checker-for-github.git"
   }
 }
