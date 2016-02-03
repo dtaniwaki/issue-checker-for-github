@@ -30,4 +30,4 @@ grunt compile
 grunt pack
 ```
 
-[store]: https://chrome.google.com/webstore/detail/github-checker/dejgifcjoefbogdjpjokobdlddjhbich
+[store]: https://chrome.google.com/webstore/detail/issue-checker-for-github/dejgifcjoefbogdjpjokobdlddjhbich
